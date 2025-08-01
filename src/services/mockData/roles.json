@@ -1,0 +1,194 @@
+[
+  {
+    "Id": 1,
+    "title": "Executive Virtual Assistant",
+    "description": "Support C-level executives with administrative tasks, calendar management, email correspondence, and project coordination. This role requires exceptional communication skills and the ability to handle confidential information with discretion.",
+    "type": "Full-time",
+    "location": "Remote (US Timezone)",
+    "salaryRange": "$45,000 - $65,000",
+    "commitment": "40+ hours/week",
+    "icon": "Crown",
+    "skills": ["Calendar Management", "Email Management", "Project Coordination", "Travel Planning", "Document Preparation", "CRM Management"],
+    "isActive": true,
+    "questions": [
+      {
+        "Id": 1,
+        "text": "Describe a time when you had to manage multiple urgent priorities for an executive. How did you handle the situation?"
+      },
+      {
+        "Id": 2,
+        "text": "How do you ensure confidentiality when handling sensitive executive information?"
+      },
+      {
+        "Id": 3,
+        "text": "Walk us through your process for managing an executive's complex calendar with frequent changes."
+      },
+      {
+        "Id": 4,
+        "text": "Describe your experience with travel planning and what tools you use to ensure smooth business trips."
+      },
+      {
+        "Id": 5,
+        "text": "How would you handle a situation where you need to decline meeting requests on behalf of your executive?"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "title": "Customer Success Virtual Assistant",
+    "description": "Help clients achieve their goals by providing exceptional support, onboarding assistance, and relationship management. Perfect for someone who loves helping others succeed and building long-term relationships.",
+    "type": "Full-time",
+    "location": "Remote (Global)",
+    "salaryRange": "$35,000 - $50,000",
+    "commitment": "40+ hours/week",
+    "icon": "Users",
+    "skills": ["Customer Support", "Onboarding", "CRM", "Communication", "Problem Solving", "Data Analysis"],
+    "isActive": true,
+    "questions": [
+      {
+        "Id": 6,
+        "text": "Tell us about a time when you turned a frustrated customer into a satisfied one. What was your approach?"
+      },
+      {
+        "Id": 7,
+        "text": "How do you prioritize multiple customer requests when resources are limited?"
+      },
+      {
+        "Id": 8,
+        "text": "Describe your process for onboarding new customers to ensure their success."
+      },
+      {
+        "Id": 9,
+        "text": "How do you identify when a customer might be at risk of churning, and what steps would you take?"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "title": "Social Media Virtual Assistant",
+    "description": "Manage social media accounts, create engaging content, schedule posts, and analyze performance metrics. This role is perfect for creative individuals who understand social media trends and audience engagement.",
+    "type": "Part-time",
+    "location": "Remote (Global)",
+    "salaryRange": "$25,000 - $40,000",
+    "commitment": "20-30 hours/week",
+    "icon": "Share2",
+    "skills": ["Content Creation", "Social Media Management", "Canva", "Analytics", "Copywriting", "Community Management"],
+    "isActive": true,
+    "questions": [
+      {
+        "Id": 10,
+        "text": "Show us your creative process for developing engaging social media content for a business."
+      },
+      {
+        "Id": 11,
+        "text": "How do you stay current with social media trends and algorithm changes across different platforms?"
+      },
+      {
+        "Id": 12,
+        "text": "Describe a successful social media campaign you've managed and the results you achieved."
+      },
+      {
+        "Id": 13,
+        "text": "How would you handle negative comments or a PR crisis on social media?"
+      },
+      {
+        "Id": 14,
+        "text": "Walk us through how you would analyze and report on social media performance metrics."
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "title": "Research & Data Virtual Assistant",
+    "description": "Conduct market research, compile data reports, and provide analytical insights to support business decisions. This role requires strong analytical skills and attention to detail.",
+    "type": "Contract",
+    "location": "Remote (Global)",
+    "salaryRange": "$30,000 - $45,000",
+    "commitment": "Project-based",
+    "icon": "BarChart3",
+    "skills": ["Market Research", "Data Analysis", "Excel", "Report Writing", "Web Research", "Statistical Analysis"],
+    "isActive": true,
+    "questions": [
+      {
+        "Id": 15,
+        "text": "Describe your methodology for conducting thorough market research on a new industry."
+      },
+      {
+        "Id": 16,
+        "text": "How do you ensure the accuracy and reliability of data you collect from various sources?"
+      },
+      {
+        "Id": 17,
+        "text": "Walk us through how you would present complex research findings to non-technical stakeholders."
+      },
+      {
+        "Id": 18,
+        "text": "Tell us about a time when your research uncovered surprising insights that changed a business strategy."
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "title": "Content Creation Virtual Assistant",
+    "description": "Write blog posts, create marketing materials, develop email campaigns, and produce various forms of content to support marketing efforts. This role is ideal for skilled writers and creative thinkers.",
+    "type": "Full-time",
+    "location": "Remote (US/Canada)",
+    "salaryRange": "$40,000 - $55,000",
+    "commitment": "40+ hours/week",
+    "icon": "PenTool",
+    "skills": ["Content Writing", "Blog Writing", "Email Marketing", "SEO", "WordPress", "Copywriting"],
+    "isActive": true,
+    "questions": [
+      {
+        "Id": 19,
+        "text": "Share examples of different types of content you've created and explain your writing process."
+      },
+      {
+        "Id": 20,
+        "text": "How do you adapt your writing style for different audiences and platforms?"
+      },
+      {
+        "Id": 21,
+        "text": "Describe your approach to SEO content writing and keyword optimization."
+      },
+      {
+        "Id": 22,
+        "text": "How do you handle writer's block and maintain creativity when producing content regularly?"
+      },
+      {
+        "Id": 23,
+        "text": "Walk us through how you would develop a content strategy for a new business."
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "title": "E-commerce Virtual Assistant",
+    "description": "Manage online stores, handle product listings, process orders, and provide customer support for e-commerce businesses. This role requires familiarity with e-commerce platforms and strong organizational skills.",
+    "type": "Full-time",
+    "location": "Remote (US Timezone)",
+    "salaryRange": "$35,000 - $50,000",
+    "commitment": "40+ hours/week",
+    "icon": "ShoppingCart",
+    "skills": ["Shopify", "Amazon", "Product Listings", "Order Processing", "Customer Service", "Inventory Management"],
+    "isActive": true,
+    "questions": [
+      {
+        "Id": 24,
+        "text": "Describe your experience with e-commerce platforms and which ones you're most comfortable using."
+      },
+      {
+        "Id": 25,
+        "text": "How would you optimize product listings to improve search visibility and conversion rates?"
+      },
+      {
+        "Id": 26,
+        "text": "Walk us through your process for managing inventory and preventing stockouts."
+      },
+      {
+        "Id": 27,
+        "text": "How do you handle customer complaints about orders, shipping, or product issues?"
+      }
+    ]
+  }
+]

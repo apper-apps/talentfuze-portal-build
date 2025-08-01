@@ -1,0 +1,31 @@
+[
+  {
+    "Id": 1,
+    "roleId": 1,
+    "personalInfo": {
+      "firstName": "Sarah",
+      "lastName": "Johnson",
+      "email": "sarah.johnson@example.com",
+      "phone": "+1 (555) 123-4567",
+      "location": "New York, NY",
+      "availability": "2-weeks",
+      "expectedSalary": "55000",
+      "workType": "full-time"
+    },
+    "documents": {
+      "resume": "sarah_johnson_resume.pdf",
+      "portfolio": "sarah_portfolio.zip",
+      "discProfile": "sarah_disc_profile.pdf"
+    },
+    "videoResponses": [
+      {
+        "questionId": 1,
+        "videoUrl": "video_1_response.webm",
+        "duration": 120,
+        "recordedAt": "2024-01-15T10:30:00Z"
+      }
+    ],
+    "status": "submitted",
+    "createdAt": "2024-01-15T10:00:00Z"
+  }
+]
