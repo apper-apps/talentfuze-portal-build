@@ -13,8 +13,9 @@ const VideoRecorder = ({
   const [hasRecording, setHasRecording] = useState(false);
   const [recordedBlob, setRecordedBlob] = useState(null);
   const [recordingTime, setRecordingTime] = useState(0);
-  const [stream, setStream] = useState(null);
-  
+const [stream, setStream] = useState(null);
+  const [permissionDenied, setPermissionDenied] = useState(false);
+  const [permissionStatus, setPermissionStatus] = useState('unknown'); // 'unknown', 'granted', 'denied', 'prompt'
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
@@ -31,20 +32,82 @@ const VideoRecorder = ({
     };
   }, [stream]);
 
-  const startCamera = async () => {
+const startCamera = async () => {
     try {
+      // Check if getUserMedia is supported
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        toast.error("Camera access is not supported in this browser. Please use a modern browser like Chrome, Firefox, or Safari.");
+        return;
+      }
+
+      // Check current permission status if available
+      if (navigator.permissions) {
+        try {
+          const permission = await navigator.permissions.query({ name: 'camera' });
+          setPermissionStatus(permission.state);
+          
+          if (permission.state === 'denied') {
+            setPermissionDenied(true);
+            toast.error("Camera access is blocked. Please enable camera permissions in your browser settings and refresh the page.");
+            return;
+          }
+        } catch (permError) {
+          // Permission API not fully supported, continue with getUserMedia
+          console.log("Permission API not supported, proceeding with getUserMedia");
+        }
+      }
+
       const mediaStream = await navigator.mediaDevices.getUserMedia({
         video: { width: 640, height: 480 },
         audio: true
       });
       
       setStream(mediaStream);
+      setPermissionDenied(false);
+      setPermissionStatus('granted');
+      
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
       }
+      
+      toast.success("Camera access granted successfully!");
+      
     } catch (error) {
       console.error("Error accessing camera:", error);
-      toast.error("Unable to access camera. Please check permissions.");
+      
+      // Handle different types of errors
+      if (error.name === 'NotAllowedError') {
+        setPermissionDenied(true);
+        setPermissionStatus('denied');
+        toast.error("Camera access denied. Please click 'Allow' when prompted or enable camera permissions in your browser settings.", {
+          autoClose: 8000
+        });
+      } else if (error.name === 'NotFoundError') {
+        toast.error("No camera found. Please connect a camera device and try again.");
+      } else if (error.name === 'NotReadableError') {
+        toast.error("Camera is already in use by another application. Please close other apps using the camera and try again.");
+      } else if (error.name === 'OverconstrainedError') {
+        toast.error("Camera does not support the required settings. Trying with default settings...");
+        // Retry with less strict constraints
+        try {
+          const fallbackStream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true
+          });
+          setStream(fallbackStream);
+          setPermissionDenied(false);
+          if (videoRef.current) {
+            videoRef.current.srcObject = fallbackStream;
+          }
+          toast.success("Camera connected with default settings.");
+        } catch (fallbackError) {
+          toast.error("Unable to access camera with any settings. Please check your camera device.");
+        }
+      } else if (error.name === 'AbortError') {
+        toast.error("Camera access was interrupted. Please try again.");
+      } else {
+        toast.error(`Camera error: ${error.message || 'Unknown error occurred'}. Please try refreshing the page.`);
+      }
     }
   };
 
@@ -145,11 +208,48 @@ const VideoRecorder = ({
             </div>
           )}
           
-          {!stream && !hasRecording && (
+{!stream && !hasRecording && (
             <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
-              <div className="text-center text-gray-300">
-                <ApperIcon name="Camera" size={48} className="mx-auto mb-2" />
-                <p>Preparing camera...</p>
+              <div className="text-center text-gray-300 max-w-md px-4">
+                {permissionDenied ? (
+                  <>
+                    <ApperIcon name="AlertTriangle" size={48} className="mx-auto mb-4 text-yellow-400" />
+                    <h3 className="text-lg font-semibold text-white mb-2">Camera Access Required</h3>
+                    <p className="text-sm mb-4">
+                      This application needs camera access to record your video responses. 
+                      Please follow these steps:
+                    </p>
+                    <div className="text-left space-y-2 mb-6 text-xs">
+                      <div className="flex items-start space-x-2">
+                        <span className="bg-blue-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs mt-0.5">1</span>
+                        <span>Click the camera icon in your browser's address bar</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="bg-blue-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs mt-0.5">2</span>
+                        <span>Select "Allow" for camera and microphone access</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="bg-blue-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs mt-0.5">3</span>
+                        <span>Click "Try Again" below</span>
+                      </div>
+                    </div>
+                    <Button 
+                      onClick={startCamera}
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2"
+                    >
+                      <ApperIcon name="RotateCcw" size={16} className="mr-2" />
+                      Try Again
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <ApperIcon name="Camera" size={48} className="mx-auto mb-2" />
+                    <p>Requesting camera access...</p>
+                    <p className="text-xs mt-2 opacity-75">
+                      Please allow camera permissions when prompted
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           )}
